@@ -1,0 +1,83 @@
+{% extends 'main/index.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row pt-3 mx-3">
+        <div class="col-sm-4">
+            <div class="d-grid gap-2">
+                <h3 class="btn btn-warning btn-lg disabled" id="results">Original Image</h3>
+            </div>
+            <div class="h-100 border text-center">
+                {% if orig_url == null %}
+                <img src="https://cdn1.vectorstock.com/i/thumb-large/75/95/cat-sad-head-face-silhouette-icon-hands-paw-vector-21157595.jpg"
+                    alt="Original image" id="original-image" class="img-fluid">
+                {% else %}
+                <img src="{{orig_url}}"
+                    alt="Original: {{orig_url}}" id="original-image" class="img-fluid">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="d-grid gap-2">
+                <h3 class="btn btn-success btn-lg disabled">Processed Image</h3>
+            </div>
+            <div class="h-100 border text-center">
+                {% if proc_url == null %}
+                <img src="https://cdn1.vectorstock.com/i/thumb-large/75/95/cat-sad-head-face-silhouette-icon-hands-paw-vector-21157595.jpg"
+                    alt="Original image" id="original-image" class="img-fluid">
+                {% else %}
+                <img src="{{proc_url}}"
+                    alt="Original: {{proc_url}}" id="original-image" class="img-fluid">
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+            <div class="d-grid gap-2">
+                <h3 class="btn btn-primary btn-lg disabled">Results</h3>
+
+                <div class="normal mt-5">
+                    <h5>Normal</h5>
+                    <div class="progress" style="height: 30px">
+                        <div class="progress-bar bg-success" role="progressbar" name="normal"
+                            aria-valuenow="{{normal}}" aria-valuemin="0" aria-valuemax="100">{{normal}}</div>
+                    </div>
+                </div>
+                <div class="benign mt-5">
+                    <h5>Benign</h5>
+                    <div class="progress" style="height: 30px">
+                        <div class="progress-bar bg-warning" role="progressbar" name="normal"
+                            aria-valuenow="{{benign}}" aria-valuemin="0" aria-valuemax="100">{{benign}}</div>
+                    </div>
+                </div>
+                <div class="cancer mt-5">
+                    <h5>Cancer</h5>
+                    <div class="progress" style="height: 30px">
+                        <div class="progress-bar bg-danger" role="progressbar" name="normal"
+                            aria-valuenow="{{cancer}}" aria-valuemin="0" aria-valuemax="100">{{cancer}}</div>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <script>
+                    var x = "{{normal}}%";
+                    var y = "{{benign}}%";
+                    var z = "{{cancer}}%";
+
+                    if (!(x=="%")) {
+                        //alert()
+                        document.getElementById('results').scrollIntoView();
+                    }
+
+                    document.querySelector(".bg-success").style.width = x;
+                    document.querySelector(".bg-warning").style.width = y;
+                    document.querySelector(".bg-danger").style.width = z;
+
+                    
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock content %}

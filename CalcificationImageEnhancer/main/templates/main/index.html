@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'custom-style.css' %}">
+    <link rel="stylesheet" href=" {% static 'bootstrap.min.css' %}">
+    <title>BMD Calcification Image Enhancer</title>
+</head>
+
+<body>
+    <div class="container-fluid d-flex min-vh-100 flex-column">
+        <header class="container navbar">
+            <h4>BMD Calcification Image Enhancer</h4>
+            <button type="button" class="btn btn-secondary btn-md btn-about" data-bs-toggle="offcanvas" href="#about"
+                role="button" aria-controls="about">About the app</button>
+        </header>
+        <div class="main row flex-fill fill d-flex ">
+            <div class="align-self-center landing-text">
+                <div class="container d-grid d-sm-block">
+                    <h1 class="mb-5"><strong>A Web-based Image Enhancement on<br>Microcalcifications Captured from
+                            Mammogram</strong></h1>
+                    <p>Automatic enhancement of calcifications images captured<br>from mammogram. Detect
+                        calcifications in one click.</p>
+                </div>
+
+                <!-- start File Form -->
+                <div class="container d-grid gap-2 d-sm-block py-5">
+                    <div class="mb-3 w-50">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input class="form-control" type="file" id="formFile" name="selFile">
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-md btn-process me-md-2 px-5">Process</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <!-- end File Form -->
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="about" aria-labelledby="aboutLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="aboutLabel">BMD Calcification Image Enhancer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>A Web-based Image Enhancement on Microcalcifications Captured from Mammogram</p>
+                        <p>
+                            This web application is purposely created to be able to fully and effectively enhance
+                            mammographic
+                            images for better detection and classification by applying select image enhancement
+                            techniques which includes intensity and contrast manipulation, filtering, equalization,
+                            segmentation, etc. The objective of this project is also to be beneficial for the industry
+                            and the academe. The results of this project may prove useful for doctors and specialists
+                            for
+                            an easier detection of microcalcification since it is an important indicator of early breast
+                            cancer. Students and researchers may also work with or upon the methodologies, findings and
+                            conclusions of this study to further the understanding within this subject matter.
+                        </p>
+                        <br><br>
+                        <p>This project was created through the collaborative effort of Hannah Mae Baroma, Jennylyn
+                            Basagre, Lance Gerard Daet, and Jessie Melendres</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Result-->
+    {% block content %}
+    
+    {% endblock content %} 
+        
+    </div>
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>
