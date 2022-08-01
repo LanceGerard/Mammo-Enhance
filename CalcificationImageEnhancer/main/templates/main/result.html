@@ -12,8 +12,7 @@
                 <img src="https://cdn1.vectorstock.com/i/thumb-large/75/95/cat-sad-head-face-silhouette-icon-hands-paw-vector-21157595.jpg"
                     alt="Original image" id="original-image" class="img-fluid">
                 {% else %}
-                <img src="{{orig_url}}"
-                    alt="Original: {{orig_url}}" id="original-image" class="img-fluid">
+                <img src="{{orig_url}}" alt="Original: {{orig_url}}" id="original-image" class="img-fluid">
                 {% endif %}
             </div>
         </div>
@@ -26,8 +25,7 @@
                 <img src="https://cdn1.vectorstock.com/i/thumb-large/75/95/cat-sad-head-face-silhouette-icon-hands-paw-vector-21157595.jpg"
                     alt="Original image" id="original-image" class="img-fluid">
                 {% else %}
-                <img src="{{proc_url}}"
-                    alt="Original: {{proc_url}}" id="original-image" class="img-fluid">
+                <img src="{{proc_url}}" alt="Original: {{proc_url}}" id="original-image" class="img-fluid">
                 {% endif %}
             </div>
 
@@ -35,26 +33,41 @@
         <div class="col-sm-4">
             <div class="d-grid gap-2">
                 <h3 class="btn btn-primary btn-lg disabled">Results</h3>
+                <div class="card p-5">
+                    <div id="statement">
+                        <p>Some statement here.. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non nulla ut
+                            repellat harum,
+                            perferendis at.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showPercentage()" id="show-percentage-button">Show
+                        detection percentage</button>
 
-                <div class="normal mt-5">
-                    <h5>Normal</h5>
-                    <div class="progress" style="height: 30px">
-                        <div class="progress-bar bg-success" role="progressbar" name="normal"
-                            aria-valuenow="{{normal}}" aria-valuemin="0" aria-valuemax="100">{{normal}}</div>
-                    </div>
-                </div>
-                <div class="benign mt-5">
-                    <h5>Benign</h5>
-                    <div class="progress" style="height: 30px">
-                        <div class="progress-bar bg-warning" role="progressbar" name="normal"
-                            aria-valuenow="{{benign}}" aria-valuemin="0" aria-valuemax="100">{{benign}}</div>
-                    </div>
-                </div>
-                <div class="cancer mt-5">
-                    <h5>Cancer</h5>
-                    <div class="progress" style="height: 30px">
-                        <div class="progress-bar bg-danger" role="progressbar" name="normal"
-                            aria-valuenow="{{cancer}}" aria-valuemin="0" aria-valuemax="100">{{cancer}}</div>
+                    <div id="show-percentage" style="display: none;">
+                        <div class="normal mt-5">
+                            <h5>Normal</h5>
+                            <div class="progress" style="height: 30px">
+                                <div class="progress-bar bg-success" role="progressbar" name="normal"
+                                    aria-valuenow="{{normal}}" aria-valuemin="0" aria-valuemax="100">{{normal}}</div>
+                            </div>
+                        </div>
+                        <div class="benign mt-5">
+                            <h5>Benign</h5>
+                            <div class="progress" style="height: 30px">
+                                <div class="progress-bar bg-warning" role="progressbar" name="normal"
+                                    aria-valuenow="{{benign}}" aria-valuemin="0" aria-valuemax="100">{{benign}}</div>
+                            </div>
+                        </div>
+                        <div class="cancer mt-5">
+                            <h5>Cancer</h5>
+                            <div class="progress" style="height: 30px">
+                                <div class="progress-bar bg-danger" role="progressbar" name="normal"
+                                    aria-valuenow="{{cancer}}" aria-valuemin="0" aria-valuemax="100">{{cancer}}</div>
+                            </div>
+                        </div>
+                        <div class="cii mt-5">
+                            <h6>Contrast Improvement</h6>
+                            <h5>{{cii}}</h5>
+                        </div>
                     </div>
                 </div>
 
@@ -64,7 +77,7 @@
                     var y = "{{benign}}%";
                     var z = "{{cancer}}%";
 
-                    if (!(x=="%")) {
+                    if (!(x == "%")) {
                         //alert()
                         document.getElementById('results').scrollIntoView();
                     }
@@ -72,12 +85,22 @@
                     document.querySelector(".bg-success").style.width = x;
                     document.querySelector(".bg-warning").style.width = y;
                     document.querySelector(".bg-danger").style.width = z;
-
-                    
                 </script>
-
+                <script>
+                    function showPercentage() {
+                        var showpercentage = document.getElementById("show-percentage");
+                        var button = document.getElementById("show-percentage-button")
+                        if (showpercentage.style.display === "none") {
+                            showpercentage.style.display = "block";
+                            button.innerHTML="Hide detection percentage"
+                        } else {
+                            showpercentage.style.display = "none";
+                            button.innerHTML="Show detection percentage"
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>
-</div> 
+</div>
 {% endblock content %}
