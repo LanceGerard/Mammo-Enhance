@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from .models import MammoEnhance as m
+from .utils import cii
 import os
 from pathlib import Path
 from urllib.parse import unquote
@@ -41,6 +42,8 @@ def index(request):
         context['cancer'] = ("%.2f" % (prediction[2]*100)).rstrip('0').rstrip('.')
         #proc = fs.save("processed-"+uploaded_file.name,toProc)
         
+        # get cii
+        context['cii'] = cii(origPath, str(exportPath)+"output.png")
 
     return render(request, "main/result.html", context)
 
