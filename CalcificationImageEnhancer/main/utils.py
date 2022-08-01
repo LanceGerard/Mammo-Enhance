@@ -62,3 +62,13 @@ def predict(imageIn):
     
     return num1, num2, num3
 
+def cii(origPath, exptPath):
+    orig_img = cv2.imread(origPath, 0)
+    expt_img = cv2.imread(exptPath, 0)
+
+    orig_ci = orig_img.std()
+    expt_ci = expt_img.std()
+
+    cii = expt_ci/orig_ci
+
+    return format(cii, ".3f")
