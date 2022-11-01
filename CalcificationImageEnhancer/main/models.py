@@ -38,9 +38,9 @@ class MammoEnhance(models.Model):
         # filterings
         kernel1 = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]]) # sharpen kernel
         # kernel2 = np.array([[0,1,0], [1,-4,1], [0,1,0]]) # laplacian sharpen kernel
-        # kernel3 = np.array([[0.075, 0.124, 0.075],[0.124, 0.204, 0.124],[0.075, 0.124, 0.075]]) # gaussian kernel
-        # gaussed_img = cv2.filter2D(contrasted_img, -1, kernel3)
-        filtered_img = cv2.filter2D(contrasted_img, -1, kernel1)
+        kernel3 = np.array([[0.075, 0.124, 0.075],[0.124, 0.204, 0.124],[0.075, 0.124, 0.075]]) # gaussian kernel
+        gaussed_img = cv2.filter2D(contrasted_img, -1, kernel3)
+        filtered_img = cv2.filter2D(gaussed_img, -1, kernel1)
 
         #greyed
         #gray2_img = cv2.cvtColor(arranged_img1, cv2.COLOR_RGB2GRAY)

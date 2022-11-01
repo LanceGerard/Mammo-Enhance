@@ -35,9 +35,10 @@
                 <h3 class="btn btn-primary btn-lg disabled">Results</h3>
                 <div class="card p-5">
                     <div id="statement">
-                        <p>Some statement here.. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non nulla ut
-                            repellat harum,
-                            perferendis at.</p>
+                        <center><em><h5>Diagnosis</h5></em></center>
+                        <br>
+                        <p>{{diag}}</p>
+                        <br>
                     </div>
                     <button class="btn btn-primary" onclick="showPercentage()" id="show-percentage-button">Show
                         detection percentage</button>
@@ -47,21 +48,21 @@
                             <h5>Normal</h5>
                             <div class="progress" style="height: 30px">
                                 <div class="progress-bar bg-success" role="progressbar" name="normal"
-                                    aria-valuenow="{{normal}}" aria-valuemin="0" aria-valuemax="100">{{normal}}</div>
+                                    aria-valuenow="{{normal}}" aria-valuemin="0" aria-valuemax="100">{{normal}}%</div>
                             </div>
                         </div>
                         <div class="benign mt-5">
                             <h5>Benign</h5>
                             <div class="progress" style="height: 30px">
                                 <div class="progress-bar bg-warning" role="progressbar" name="normal"
-                                    aria-valuenow="{{benign}}" aria-valuemin="0" aria-valuemax="100">{{benign}}</div>
+                                    aria-valuenow="{{benign}}" aria-valuemin="0" aria-valuemax="100">{{benign}}%</div>
                             </div>
                         </div>
                         <div class="cancer mt-5">
                             <h5>Cancer</h5>
                             <div class="progress" style="height: 30px">
                                 <div class="progress-bar bg-danger" role="progressbar" name="normal"
-                                    aria-valuenow="{{cancer}}" aria-valuemin="0" aria-valuemax="100">{{cancer}}</div>
+                                    aria-valuenow="{{cancer}}" aria-valuemin="0" aria-valuemax="100">{{cancer}}%</div>
                             </div>
                         </div>
                         <div class="cii mt-5">

@@ -36,7 +36,7 @@ def equalize(img):
 def predict(imageIn):
     imageIn = (rearrange(imageIn))
     # Load the model
-    model = load_model("main/mammo-caps-model/keras_model.h5", compile=False)
+    model = load_model("main/mammo-caps-model/ResNet152_Mammo.h5", compile=False)
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     
     #resize the image to a 224x224 with the same strategy as in TM2:
@@ -72,3 +72,15 @@ def cii(origPath, exptPath):
     cii = expt_ci/orig_ci
 
     return format(cii, ".3f")
+
+def diagnosis(prd):
+    diag = ""
+
+    if ((prd[0] > prd[1])&(prd[0] > prd[2])):
+        diag = "The image indicates a high probability of NORMAL condition. An appointment with your doctor is still recommended."
+    elif ((prd[1] > prd[0])&(prd[1] > prd[2])):
+        diag = "The image indicates a high probability of BENIGN condition. An appointment with your doctor is recommended."
+    elif ((prd[2] > prd[0])&(prd[2] > prd[1])):
+        diag = "The image indicates a high probability of CANCER condition. An appointment with your doctor is highly recommended."
+
+    return diag

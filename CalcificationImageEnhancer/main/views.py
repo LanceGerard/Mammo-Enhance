@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from .models import MammoEnhance as m
-from .utils import cii
+from .utils import cii, diagnosis
 import os
 from pathlib import Path
 from urllib.parse import unquote
@@ -44,6 +44,9 @@ def index(request):
         
         # get cii
         context['cii'] = cii(origPath, str(exportPath)+"output.png")
+
+        # get diagnosis
+        context['diag'] = diagnosis(prediction)
 
     return render(request, "main/result.html", context)
 

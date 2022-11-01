@@ -1,0 +1,1 @@
+web gunicorn CalcificationImageEnhancer.wsgi:application --log-file -
