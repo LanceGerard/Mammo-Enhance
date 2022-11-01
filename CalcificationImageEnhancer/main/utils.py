@@ -36,7 +36,7 @@ def equalize(img):
 def predict(imageIn):
     imageIn = (rearrange(imageIn))
     # Load the model
-    model = load_model("main/mammo-caps-model/ResNet152_Mammo.h5", compile=False)
+    model = load_model("main/mammo-caps-model/keras_model.h5", compile=False)
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     
     #resize the image to a 224x224 with the same strategy as in TM2:
